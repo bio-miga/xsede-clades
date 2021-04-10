@@ -9,7 +9,11 @@ if [[ ! -d "$SCRATCH/$1" ]] ; then
 fi
 
 cd $SCRATCH
-. ~/.miga_rc
-miga daemon start -P "$1" --shutdown-when-done
-hostname > "$1/daemon/hostname"
+JID=$(MIGA_CLADE=$1 \
+  sbatch \
+    --job-name="C:launch-$1" --output="$SCRATCH_LOG/launch.%j.out" \
+    "$SUITE/launch.slurm" \
+    | perl -pe 's/.* //')
+echo "$JID" > "$1/launch.jid"
+echo "- Launching clade in job '$JID'"
 

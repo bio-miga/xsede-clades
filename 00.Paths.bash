@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SUITE=$HOME/clades_suite
+SUITE=$HOME/xsede-clades
 SCRATCH=$HOME/scratch/Clades
 SCRATCH_LOG=$HOME/scratch/Clades.log
 DATA=$HOME/data/Clades
@@ -27,11 +27,11 @@ function wait_for {
 }
 
 function running_updates {
-  squeue -u lrr | tail -n +2 | awk '$3=="C:update"' | wc -l
+  squeue -u $(whoami) | tail -n +2 | awk '$3=="C:update"' | wc -l
 }
 
 function running_launches {
-  ps aux | awk '$1=="lrr" && $11 ~ /MiGA/' | wc -l
+  ps aux | awk '$1=="'$(whoami)'" && $11 ~ /MiGA/' | wc -l
 }
 
 function finished_project {

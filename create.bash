@@ -11,7 +11,7 @@ fi
 if [[ ! -d "$SCRATCH/$1" ]] ; then
   cd $SCRATCH
   source $HOME/.miga_rc
-  miga new -P "$1" -t clade -m "aai_p=diamond,ani_p=fastani"
+  miga new -P "$1" -t clade
   $SUITE/update.bash "$1"
 fi
 

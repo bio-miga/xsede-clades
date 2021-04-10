@@ -6,5 +6,5 @@
 > ([XSEDE](https://www.xsede.org))
 
 This repository automates deployment and profiling of MiGA projects in the
-XSEDE / COMET enviroment
+XSEDE / Expanse environment
 
